@@ -1,24 +1,18 @@
 package io.github.arnascizi.api.utility;
 
-import java.util.Date;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-
+import io.github.arnascizi.bl.dto.UserDetailsPrinciple;
+import io.jsonwebtoken.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import io.github.arnascizi.bl.dto.UserDetailsPrinciple;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.apachecommons.CommonsLog;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -75,7 +69,7 @@ public class JwtUtils {
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS256, jwtSecret)
                 .compact();
     }
 }

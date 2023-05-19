@@ -13,7 +13,7 @@ import io.github.arnascizi.model.Designer;
 
 @Component
 @Transactional
-public class DesignerRepositoryImpl extends SimpleJpaRepository<Designer, Long> implements DesignerRepository {
+public class DesignerRepositoryImpl extends SimpleJpaRepository<Designer, Long> {
 
     @PersistenceContext
     private EntityManager em;

@@ -1,13 +1,15 @@
 package io.github.arnascizi.bl.dto;
 
-import java.util.Collection;
-import java.util.Collections;
-
+import io.github.arnascizi.model.TtgUser;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import io.github.arnascizi.model.TtgUser;
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class UserDetailsPrinciple implements UserDetails {
@@ -48,4 +50,33 @@ public class UserDetailsPrinciple implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Long getId() {
+        return ttgUser.getId();
+    }
+
+    public String getEmail() {
+        return ttgUser.getEmail();
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return ttgUser.getCreatedAt();
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return ttgUser.getUpdatedAt();
+    }
+
+    public List<GameDto> getUserCollection() {
+        return ttgUser.getUserCollection().stream()
+                .map(GameDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<GameDto> getUserWishlist() {
+        return ttgUser.getUserWishlist().stream()
+                .map(GameDto::of)
+                .collect(Collectors.toList());
+    }
+
 }

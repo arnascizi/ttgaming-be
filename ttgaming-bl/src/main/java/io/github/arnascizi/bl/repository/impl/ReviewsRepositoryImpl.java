@@ -1,19 +1,17 @@
 package io.github.arnascizi.bl.repository.impl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import io.github.arnascizi.model.Review;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.arnascizi.bl.repository.ReviewsRepository;
-import io.github.arnascizi.model.Review;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Component
 @Transactional
-public class ReviewsRepositoryImpl extends SimpleJpaRepository<Review, Long> implements ReviewsRepository {
+public class ReviewsRepositoryImpl extends SimpleJpaRepository<Review, Long> {
 
     @PersistenceContext
     private EntityManager em;

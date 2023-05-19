@@ -13,7 +13,7 @@ import io.github.arnascizi.model.Expansion;
 
 @Component
 @Transactional
-public class ExpansionRepositoryImpl extends SimpleJpaRepository<Expansion, Long> implements ExpansionRepository {
+public class ExpansionRepositoryImpl extends SimpleJpaRepository<Expansion, Long> {
 
     @PersistenceContext
     private EntityManager em;

@@ -9,9 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"io.github.arnascizi"})
-@EntityScan("io.github.arnascizi.model")
-@EnableJpaRepositories("io.github.arnascizi.bl.repository")
 public class GamingApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

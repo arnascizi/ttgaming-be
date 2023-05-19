@@ -1,18 +1,16 @@
 package io.github.arnascizi.bl.repository.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import io.github.arnascizi.bl.repository.BoardGameRepository;
+import io.github.arnascizi.bl.repository.BoardGameSpecifications;
+import io.github.arnascizi.model.Game;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.arnascizi.bl.repository.BoardGameRepository;
-import io.github.arnascizi.model.Game;
-import io.github.arnascizi.model.Game_;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Component
 @Transactional
@@ -27,7 +25,7 @@ public class BoardGameRepositoryImpl extends SimpleJpaRepository<Game, Long> imp
 
     @Override
     public List<Game> findAllGames() {
-        return findAll((root, query, cb) -> cb.isNotNull(root.get(Game_.id)));
+        return findAll(BoardGameSpecifications.buildSpecifications());
     }
 
     // TODO lookup dependencies
