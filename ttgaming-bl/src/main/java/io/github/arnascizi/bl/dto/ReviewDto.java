@@ -1,12 +1,12 @@
 package io.github.arnascizi.bl.dto;
 
-import java.time.LocalDateTime;
-
 import io.github.arnascizi.model.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -18,6 +18,7 @@ public class ReviewDto {
     private String content;
     private Integer rating;
     private LocalDateTime createdAt;
+    private UserDto user;
 
     public static ReviewDto of(Review review) {
         return ReviewDto.builder()
@@ -25,6 +26,7 @@ public class ReviewDto {
                 .rating(review.getRating())
                 .createdAt(review.getCreatedAt())
                 .content(review.getComment())
+                .user(UserDto.of(review.getTtgUser()))
                 .build();
     }
 }

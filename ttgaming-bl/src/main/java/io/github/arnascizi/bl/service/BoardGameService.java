@@ -1,24 +1,14 @@
 package io.github.arnascizi.bl.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Component;
-
-import io.github.arnascizi.bl.dto.CategoryDto;
-import io.github.arnascizi.bl.dto.DesignerDto;
-import io.github.arnascizi.bl.dto.GameDto;
-import io.github.arnascizi.bl.dto.MechanicDto;
-import io.github.arnascizi.bl.dto.PublisherDto;
+import io.github.arnascizi.bl.dto.*;
 import io.github.arnascizi.bl.repository.impl.BoardGameRepositoryImpl;
-import io.github.arnascizi.model.Category;
-import io.github.arnascizi.model.Designer;
-import io.github.arnascizi.model.Game;
-import io.github.arnascizi.model.Game_;
-import io.github.arnascizi.model.Mechanic;
-import io.github.arnascizi.model.Publisher;
+import io.github.arnascizi.model.*;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -26,8 +16,20 @@ public class BoardGameService {
 
     private final BoardGameRepositoryImpl boardGameRepository;
 
-    public List<GameDto> getAllGames() {
+    public List<GameDto> getTopGames() {
+        return boardGameRepository.getTopGames().stream()
+                .map(GameDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<GameDto> getAllGamesList() {
         return boardGameRepository.findAllGames().stream()
+                .map(GameDto::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<GameDto> getAllGames(@NonNull GameSearch search) {
+        return boardGameRepository.getAllGames(search).stream()
                 .map(GameDto::of)
                 .collect(Collectors.toList());
     }

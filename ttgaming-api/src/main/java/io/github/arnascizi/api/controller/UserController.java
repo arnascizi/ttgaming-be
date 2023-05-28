@@ -59,10 +59,6 @@ public class UserController {
         if (userService.existsByUsername(request.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
         }
-//
-//        if (userService.existsByEmail(request.getEmail())) {
-//            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
-//        }
         request.setPassword(encoder.encode(request.getPassword()));
         userService.registerUser(request);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

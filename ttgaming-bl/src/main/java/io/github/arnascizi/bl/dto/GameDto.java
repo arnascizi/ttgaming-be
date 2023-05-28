@@ -1,14 +1,14 @@
 package io.github.arnascizi.bl.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import io.github.arnascizi.model.Game;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -59,6 +59,9 @@ public class GameDto {
                         .collect(Collectors.toList()))
                 .mechanics(game.getGameMechanics().stream()
                         .map(MechanicDto::of)
+                        .collect(Collectors.toList()))
+                .publishers(game.getGamePublishers().stream()
+                        .map(PublisherDto::of)
                         .collect(Collectors.toList()))
                 .build();
     }

@@ -128,16 +128,16 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER review_updated_at
     BEFORE UPDATE
-    ON ttgaming.review
+    ON review
     FOR EACH ROW
 EXECUTE FUNCTION update_review_updated_at();
 
 CREATE OR REPLACE FUNCTION update_game_rating_on_review() RETURNS TRIGGER AS
 $$
 BEGIN
-    UPDATE ttgaming.game
+    UPDATE game
     SET rating = (SELECT COALESCE(AVG(rating), 0)
-                  FROM ttgaming.review
+                  FROM review
                   WHERE game_id = NEW.game_id)
     WHERE id = NEW.game_id;
     RETURN NEW;
@@ -146,6 +146,6 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER update_game_rating_trigger
     AFTER INSERT
-    ON ttgaming.review
+    ON review
     FOR EACH ROW
 EXECUTE FUNCTION update_game_rating_on_review();

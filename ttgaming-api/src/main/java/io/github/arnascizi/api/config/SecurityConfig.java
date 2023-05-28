@@ -24,39 +24,6 @@ public class SecurityConfig {
     private final UserService userService;
     private final AuthEntryPointJwt unauthorizedHandler;
 
-    // @Bean
-    // @Override
-    // protected void configure(HttpSecurity http) throws Exception {
-    //     http.cors().and().csrf().disable()
-    //             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-    //             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-    //             .authorizeRequests().antMatchers("/api/users/**").permitAll()
-    //             // .antMatchers("/api/test/**").permitAll()
-    //             .anyRequest().authenticated();
-    //
-    //     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    //
-    //     // http.csrf().disable();
-    //     // http.headers().frameOptions().disable();
-    //     // http.authorizeRequests()
-    //     //         .antMatchers("/api/**").permitAll();
-    //
-    //     // http.authorizeRequests().antMatchers(PERMIT_URLS).denyAll();
-    //     // http.authorizeRequests().anyRequest().hasAnyRole("USER");
-    //     //
-    //     // FormLoginConfigurer<HttpSecurity> formLogin = http.formLogin();
-    //     // formLogin.loginPage("/login");
-    //     // formLogin.usernameParameter("email");
-    //     // formLogin.passwordParameter("password");
-    //     // formLogin.defaultSuccessUrl("/");
-    //     //
-    //     // http.exceptionHandling().accessDeniedPage("/access_denied");
-    //     //
-    //     // http.headers().frameOptions().disable();
-    //     //
-    //     // http.csrf().disable();
-    // }
-
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
@@ -85,7 +52,7 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/**").permitAll()
+                .authorizeRequests().antMatchers(PERMIT_URLS).permitAll()
 //                .antMatchers("/api/games/**").anonymous()
                 .anyRequest().authenticated();
 
