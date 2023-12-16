@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import io.github.arnascizi.api.bl.dto.ExpansionDto;
 import io.github.arnascizi.api.bl.repository.impl.ExpansionRepositoryImpl;
 import io.github.arnascizi.api.model.Expansion;
-import io.github.arnascizi.model.Expansion_;
+import io.github.arnascizi.api.model.Expansion_;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

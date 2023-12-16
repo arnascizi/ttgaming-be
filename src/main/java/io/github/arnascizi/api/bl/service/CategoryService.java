@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import io.github.arnascizi.api.bl.dto.CategoryDto;
 import io.github.arnascizi.api.bl.repository.impl.CategoryRepositoryImpl;
 import io.github.arnascizi.api.model.Category;
-import io.github.arnascizi.model.Category_;
+import io.github.arnascizi.api.model.Category_;
 import lombok.RequiredArgsConstructor;
 
 @Component

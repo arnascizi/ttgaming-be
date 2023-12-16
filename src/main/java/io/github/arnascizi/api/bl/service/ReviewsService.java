@@ -12,8 +12,8 @@ import io.github.arnascizi.api.bl.repository.impl.BoardGameRepositoryImpl;
 import io.github.arnascizi.api.bl.repository.impl.ReviewsRepositoryImpl;
 import io.github.arnascizi.api.bl.repository.impl.UserRepositoryImpl;
 import io.github.arnascizi.api.model.Review;
-import io.github.arnascizi.model.Game_;
-import io.github.arnascizi.model.Review_;
+import io.github.arnascizi.api.model.Game_;
+import io.github.arnascizi.api.model.Review_;
 import lombok.RequiredArgsConstructor;
 
 @Component
