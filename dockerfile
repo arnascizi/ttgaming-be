@@ -1,6 +1,3 @@
 FROM openjdk:11
-VOLUME /tmp
-EXPOSE 9090
-ARG JAR_FILE=ttgaming-api/target/ttgaming-api-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} app.jar
+COPY ttgaming-api/target/ttgaming-api-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]

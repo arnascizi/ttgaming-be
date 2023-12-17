@@ -1,14 +1,25 @@
 package io.github.arnascizi.bl.service;
 
-import io.github.arnascizi.bl.dto.*;
-import io.github.arnascizi.bl.repository.impl.BoardGameRepositoryImpl;
-import io.github.arnascizi.model.*;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Component;
+
+import io.github.arnascizi.bl.dto.CategoryDto;
+import io.github.arnascizi.bl.dto.DesignerDto;
+import io.github.arnascizi.bl.dto.GameDto;
+import io.github.arnascizi.bl.dto.GameSearch;
+import io.github.arnascizi.bl.dto.MechanicDto;
+import io.github.arnascizi.bl.dto.PublisherDto;
+import io.github.arnascizi.bl.repository.impl.BoardGameRepositoryImpl;
+import io.github.arnascizi.model.Category;
+import io.github.arnascizi.model.Designer;
+import io.github.arnascizi.model.Game;
+import io.github.arnascizi.model.Game_;
+import io.github.arnascizi.model.Mechanic;
+import io.github.arnascizi.model.Publisher;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

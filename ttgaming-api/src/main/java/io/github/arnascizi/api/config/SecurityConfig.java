@@ -1,8 +1,5 @@
 package io.github.arnascizi.api.config;
 
-import io.github.arnascizi.api.helper.AuthTokenFilter;
-import io.github.arnascizi.bl.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +10,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import io.github.arnascizi.api.helper.AuthTokenFilter;
+import io.github.arnascizi.bl.service.UserService;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 // @EnableWebSecurity
